@@ -1,0 +1,181 @@
+<div class="title-section">
+    Navegacion Angular <span class="keyword">ROUTING</span>
+    <hr>
+</div>
+
+<div class="content">
+    <p>
+        La navegacion de una aplicacion o pagina web es muy importante para que el usuario puede acceder a las distintas secciones que posee nuestro sitio web. Angular provee un potente sistema de <span class="keyword">routing</span> para establecer la
+        navegacion por el sitio web.
+    </p>
+    <p>
+        Las rutas en angular son un arreglo de objetos <span class="keyword">Routes</span>, a continuacion se muestra como se especifican las rutas:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing1.png" alt="">
+    </div>
+    <p>
+        En la imagen se puede observar el arreglo de rutas llamado <span class="keyword">rutas</span> de tipo <span class="keyword">Routes</span> de la biblioteca <span class="keyword">@angular/router</span>, cada ruta creada tiene las siguientes propiedades:
+    </p>
+    <ul>
+        <li>
+            <b>patch</b>: Estable el nombre de la ruta, esta se vera reflejada en la URL del navegador.
+        </li>
+        <li>
+            <b>component</b>: Especifica el componente que sera llamado cuando se solicite un <span class="keyword">patch</span> especifico.
+        </li>
+        <li>
+            <b>patch='**'</b>: Es una ruta especial que se llama cuando el usuario trata de acceder a una ruta que no esta definida en el sistema de rutas, se acompaña de la propiedad <b>redirectTo</b> para indicar la ruta por defecto a la que se debe
+            acceder.
+        </li>
+    </ul>
+    <p>
+        Una vez creado el sistema de rutas se debe decir a Angular que se usara dicho sistema de rutas, esto debe hacerce importando las rutas en el <span class="keyword">AppModule</span> de la aplicacion. Notar que en la imagen se exporta la ruta como
+        principal usando el metodo <span class="keyword">forRoot</span> del objeto <span class="keyword">RouterModule</span>.
+    </p>
+    <p>
+        En el <span class="keyword">app.module</span> se debera colocar el sistema de rutas en la seccion <span class="keyword">imports[]</span>.
+    </p>
+    <div class="img">
+        <img style="width: 40%;" src="../../assets/img/routing2.png" alt="">
+    </div>
+</div>
+
+<div class="title-section">
+    ¿Como usar el sistema de rutas? <span class="keyword">RouterLink y RouterLinkActive</span>
+    <hr>
+</div>
+
+<div class="content">
+    <p>Una vez establecido el sistema de rutas, importado al modulo principal, puede hacerse uso de <span class="keyword">routerLink</span> para acceder a ese componente. <b>¿Donde usar routerLink?</b> Puede usarse en cualquier elemento HTML, pero es mas
+        comun realizar la navegacion haciendo uso de enlaces y/o botones de accion.</p>
+
+    <p>A continuacion se usa el sistema de rutas con enlaces:</p>
+    <div class="img">
+        <img style="width: 30%;" src="../../assets/img/routing3.png" alt="">
+    </div>
+    <p>
+        Notar el uso del caracter <span class="keyword">/</span> para acceder a la ruta, puede obviarse este caracter, pero es recomendable usarlo.
+    </p>
+    <p>
+        Una vez establecida la navegacion, en el navegador puede observar la forma en que se crea la ruta:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing4.png" alt="">
+    </div>
+    <div class="img">
+        <img src="../../assets/img/router5.png" alt="">
+    </div>
+    <p>
+        Si usted intenta navegar entre sus componentes usando el sistema de rutas creado, no podra ver su contenido debido a que falta un paso importante. Cuando se trabaja con sistema de rutas es necesario que en el <span class="keyword">
+            app.component.html</span> colocar la etiqueta <span class="keyword">router-outlet</span>, tal como se muestra a continuacion:
+    </p>
+    <div class="img">
+        <img style="width: 40%;" src="../../assets/img/routing5.png" alt="">
+    </div>
+    <p>
+        Ahora que nuestro sistema de rutas funciona de forma correcta, es comun observar en muchos sitios web que al visitar cierta pagina de un sitio web se agregue un estilo al enlace que hace referencia a esta pagina. En nuestro caso, cuando el usuario haga
+        clic en el enlace de una pagina de nuestro sitio haremos que dicho enlace quede con estilo CSS que indique que esta activo o que el usuario se encuentra en dicha pagina. Para esto angular provee un atributo de etiqueta llamado <span class="keyword">routerLinkActive</span>        el cual recibe como valor la clase de estilos que sera aplicada a dicho elemento, esta clase debe estar definida en el archivo CSS donde se encuentre el componente de navegacion.
+    </p>
+    <p>
+        El uso de <span class="keyword">routerLinkActive</span> es de la misma forma que <span class="keyword">routerLink</span>, pero especificando como valor el nombre de la clase CSS que sera aplicada a cada elemento de navegacion:
+    </p>
+    <div class="img">
+        <img style="width: 45%;" src="../../assets/img/routing8.png" alt="">
+    </div>
+    <p>
+        La clase <span class="keyword">active</span> se define como sigue:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing9.png" style="width: 30%;" alt="">
+    </div>
+    <p>
+        Finalmente el efecto es el siguiente:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing6.png" alt="">
+    </div>
+    <div class="img">
+        <img src="../../assets/img/routing7.png" alt="">
+    </div>
+</div>
+
+<div class="title-section">
+    Parametros en las rutas <span class="keyword">ActivatedRouter</span>
+    <hr>
+</div>
+
+<div class="content">
+    <p>
+        El sistema de rutas de Angular nos permite enviar informacion adicional usando las rutas creadas. Imagine que tiene una pagina donde muestra una lista de productos y otra pagina que muestra dicho producto en detalle y se desea que cuando el usuario haga
+        clic sobre algun producto de la lista se muestre su detalle, una forma de solventar esto es creando una pagina de detalle para cada producto en la lista, pero existe el inconveniente de agregacion de nuevos productos y esto conllevaria a la creacion
+        de una nueva pagina de detalle para cada nuevo producto añadido a la lista.
+    </p>
+    <p>Angular nos permite hacer mas eficiente dicha tarea, con angular podremos pasarle como parametro el id del producto a la pagina de detalle y que esta pagina realice la consulta en detalle de dicho producto y renderize en su plantilla la informacion
+        necesaria. Con esto nos evitamos crear una pagina para cada producto en la lista, ya que la plantilla de la pagina producto detalle tomaria el id para mostrar la informacion del producto.
+    </p>
+    <p>Para indicarle a angular que una ruta en particular recibira un parametro basta indicarlo de la siguiente forma:</p>
+    <div class="img">
+        <img src="../../assets/img/routing10.png" style="width: 45%;" alt="">
+    </div>
+    <p>
+        En la imagen la ruta con parametros es la segunda ruta mostrada, notar que para indicar que una ruta recibira un parametro debe indicardo con <span class="keyword">/:nombre_parametro</span>. Para este ejemplo usaremos un componentes que muestre
+        un conjunto de nombres, cuando se haga clic sobre alguno de los nombres se procedera a mostrar una pagina con el detalle de la persona seleccionada. La pagina con el listado sera muy sencilla y se muestra a continuacion (incluso se puede ver ya
+        la ruta creada <span class="keyword">personas</span>):
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing11.png" alt="">
+    </div>
+    <p>Una vez creados el componente del listado de personas y el componente del detalle de cada persona y adicional las rutas de cada una con parametro, indicaremos mediante <span class="keyword">routerLink</span> que al hacer clic se redirija a la respectiva
+        pagina de detalle de la persona seleccionada, es aqui donde enviaremos el id de la persona que el usuario selecciono, tal como se muestra a continuacion en la plantilla de listado de personas:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing12.png" alt="">
+    </div>
+    <p>
+        Notar la forma en que se ha usado <span class="keyword">routerLink</span>, es recomendable usarlo de esta forma cuando se requiere enviar parametros en las rutas. Tambien notar que el parametro enviado es tomado de una variable llamada <span class="keyword">persona</span>        definida en el controlador del componente y que es llamada desde un servicio estatico local al proyecto que es donde se ha creado un array de objetos con la informacion de cada persona.
+    </p>
+    <p>
+        Una vez hecho esta parte, si damos clic en alguna persona, la URL en el navegador se mostrara como sigue:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing13.png" alt="">
+    </div>
+    <div class="img">
+        <img src="../../assets/img/routing14.png" alt="">
+    </div>
+    <p>
+        Notar como al dar clic sobre una de las personas listadas se envia el id de la persona en la URL a la pagina detalle persona. Ahora <b>¿Como tomamos ese ID en el componente detalle persona?</b>, para dicha operación se debera usar el objeto
+        <span class="keyword">ActivatedRoute</span> que devuelve un observable en el cual deberemos subscribirnos para acceder a los datos. A continuacion se muestra el codigo:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing15.png" alt="">
+    </div>
+    <p>
+        Se puede observar en el metodo <span class="keyword">ngOnInit()</span> el uso del observable y como accedemos a los datos y como esta es pasada al servicio para consultar la informacion de la persona por ID.
+    </p>
+    <p>
+        Una vez hecho esto, en la plantilla html del detalle de la persona podemos acceder y mostrar la informacion de la persona:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing16.png" alt="">
+    </div>
+    <p>
+        Finalmente el resultado es el siguiente:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/routing17.png" alt="">
+    </div>
+    <div class="img">
+        <img src="../../assets/img/routing18.png" alt="">
+    </div>
+    <div class="img">
+        <img src="../../assets/img/routing19.png" alt="">
+    </div>
+    <p>
+        Si desea validar la funcionalidad de este ejemplo, en este mismo sitio se encuentra un link para navegar a dicha seccion, sino puede hacer click a continuacion <a routerLink="/personas" href="">Ir Personas</a>.
+    </p>
+    <p>
+        Esto es todo por esta seccion, espero que esta explicación básica halla sido de ayuda.
+    </p>
+</div>
