@@ -20,7 +20,7 @@ export class NombreDetalleComponent implements OnInit {
       this.persona = this.servicioConsultaNombresService.getNombre(id['id']);
       
     })
-    
+    console.log(this.persona);
   }
 
 }

@@ -1,1 +1,115 @@
-<p>seccion-dos works!</p>
+<div class="title-section">
+    Data Binding
+    <hr>
+</div>
+<div class="content">
+    <p>
+        El <span class="keyword">Data Binding</span> puede considerarse como la comunicacion que existe entre nuestra plantilla <b>HTML</b> y el controlador <b>.ts</b>, lo cual permite que podamos tener contenido dinamico en nuestra plantilla en vez de
+        estático. Angular provee algunas formas de comunicacion entre archivos:
+    </p>
+    <ul>
+        <li>
+            Mostrar informacion del archivo TS a la plantilla HTML: <span class="keyword">Interpolación y Propiedades Binding</span>.
+        </li>
+        <li>
+            Pasar información desde la plantilla HTML al archivo TS, lo cual se conoce como reaccion a eventos: <span class="keyword">Event Binding</span>.
+        </li>
+        <li>
+            Comunicacion en ambas direcciones a la vez: <span class="keyword">Two Way DataBinding</span>.
+        </li>
+    </ul>
+    <p>A continuación veremos algunos ejemplos para tratar de entender el uso de Data Binding.</p>
+</div>
+<div class="title-section">
+    Interpolación
+    <hr>
+</div>
+<div class="content">
+    <p>
+        Para este ejemplo crearemos un contador, el cual tendrá una sección que se actualizará de forma dinamica, el contador sera una variable en nuestro archivo TS y esta sera renderizada en el archivo HTML usando la interpolación. Puede acceder al ejercicio
+        en la opción Ejemplos o haciendo clic <a routerLink="/ejemplos" href="#">Aqui</a>.
+    </p>
+    <p>
+        Para hacer uso de la <span class="keyword">interpolación</span> se debe encerrar a la variable en tre dobles llaves, tal como se muestra a continuación:
+    </p>
+    <div class="img">
+        <img style="width: 30%;" src="../../assets/img/data0.png" alt="">
+    </div>
+    <p>
+        Notar nuestra variable <span class="keyword">counter</span> encerrada entre dobles llaves. En nuestro archivo TS tenemos lo siguiente:
+    </p>
+    <div class="img">
+        <img style="width: 40%;" src="../../assets/img/data1.png" alt="">
+    </div>
+
+</div>
+<div class="title-section">
+    Propiedades Binding
+    <hr>
+</div>
+<p>
+    Las propiedades Binding nos permiten hacer que los atributos de las etiquetas HTML sean dinamicas y no estaticas. Por ejemplo, supongamos que tenemos un boton que por defecto tiene la propiedad
+    <span class="keyword">disable</span> que esta seteado en <b>true</b> y que se activara de forma automatica luego de 2 segundos.
+</p>
+<p>
+    Nuestra plantilla HTML es como sigue:
+</p>
+<div class="img">
+    <img src="../../assets/img/data2.png" alt="">
+</div>
+<p>
+    Notar que la propiedad disabled esta seteada de forma estática. Nuestro siguiente paso es crear una variable <span class="keyword">booleana</span> que active nuestro boton luego de dos segundos. A continuación el código:
+</p>
+<div class="img">
+    <img style="width: 40%;" src="../../assets/img/data3.png" alt="">
+</div>
+<p>
+    Para que la propiedad <b>disabled</b> sea dinamica, se deben encerrar entre corchetes a la variable seguido del valor, en nuestro caso el valor de la variable, tal como se muestra a continuación:
+</p>
+<div class="img">
+    <img src="../../assets/img/data4.png" alt="">
+</div>
+<p>
+    Notar la negación de la variable de control, se pensaría que el boton iniciará habilitado, pero no es asi. Por el lado del TS tenemos lo siguiente:
+</p>
+<div class="img">
+    <img src="../../assets/img/data5.png" alt="">
+</div>
+<p>
+    Esto permite cambiar el estado de la variable dentro de 2 segundos, cuando negamos la variable en la propiedad binding el setTimeOut cambiar enseguida su estado de <b>true</b> a <b>false</b>, por lo que el boton incia deshabilitado. Luego de los 2
+    segundos el botón se habilitará sin intervención del usuario.
+</p>
+<div class="title-section">
+    Event Binding
+    <hr>
+</div>
+<div class="content">
+    <p>
+        El <b>EventBinding</b> son muy parecidos a las PropertyBinding, con la diferencia que es ahora el archivo HTML quien emite la información hacia el archivo TS. Este tipo de comunicación esta basada en Eventos generados por el usuario, como por
+        ejemplo hacer Clic sobre un boton. Para este ejemplo usaremos un boton para nuestro contador, el usuario tendra un boton para aumentar el contador.
+    </p>
+    <p>
+        La forma de usar <b>EventBinding</b> es encerrando el evento entre parentesis y como valor recibe la funcion que se ejecutara para dicho evento.
+    </p>
+    <p>
+        Nuestra plantilla HTML para nuestro ejemplo es la siguiente:
+    </p>
+    <div class="img">
+        <img style="width: 35%;" src="../../assets/img/data6.png" alt="">
+    </div>
+    <p>
+        Por el lado del archivo TS tenemos:
+    </p>
+    <div class="img">
+        <img src="../../assets/img/data7.png" alt="">
+    </div>
+    <p>
+        El evento que que usaremos sera cuando el usuario haga clic sobre el boton, para esto añadimos <b>(click)="funcion"</b> para emitir el evento al archivo TS y que se ejecute la función especificada. Tal como se muestra a continuación:
+    </p>
+    <div class="img">
+        <img style="width: 35%;" src="../../assets/img/data8.png" alt="">
+    </div>
+    <p>
+        Con esto el boton respondera cada vez que el usuario haga clic sobre el botón. En la sección ejemplos puede interactuar con el ejemplo.
+    </p>
+</div>

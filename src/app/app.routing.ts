@@ -8,6 +8,7 @@ import { SeccionCuatroComponent } from '../app/seccion-cuatro/seccion-cuatro.com
 import { SeccionCincoComponent } from '../app/seccion-cinco/seccion-cinco.component';
 import { NombresComponent } from '../app/nombres/nombres.component';
 import { NombreDetalleComponent } from '../app/nombre-detalle/nombre-detalle.component';
+import { EjemplosComponent } from '../app/ejemplos/ejemplos.component';
 
 const rutas:Routes = [
     {path:"routing", component: SeccionUnoComponent},
@@ -16,6 +17,7 @@ const rutas:Routes = [
     {path:"cuatro",component:SeccionCuatroComponent},
     {path:"cinco",component:SeccionCincoComponent},
     {path:"personas",component:NombresComponent},
+    {path:"ejemplos",component:EjemplosComponent},
     {path:"persona/:id",component:NombreDetalleComponent},
     {path:"**",pathMatch:"full",redirectTo:"uno"}
 ];

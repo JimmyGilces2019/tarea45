@@ -16,6 +16,7 @@ import { NombreDetalleComponent } from './nombre-detalle/nombre-detalle.componen
 
 /* SERVICIO CONSULTA NOMBRES */
 import { ServicioConsultaNombresService } from '../app/servicio-consulta-nombres.service';
+import { EjemplosComponent } from './ejemplos/ejemplos.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ServicioConsultaNombresService } from '../app/servicio-consulta-nombres
     SeccionCuatroComponent,
     SeccionCincoComponent,
     NombresComponent,
-    NombreDetalleComponent
+    NombreDetalleComponent,
+    EjemplosComponent
   ],
   imports: [
     BrowserModule,

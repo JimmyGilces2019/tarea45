@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="title">
+        CONTADOR
+    </div>
+    <div class="content">
+
+        <div class="counter">
+            {{ counter }}
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="title">
+        BOTON
+    </div>
+    <div class="content">
+        <div class="button">
+            <button [disabled]="!habilitarBoton">{{textBoton}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="title">
+        CONTADOR
+    </div>
+    <div class="content">
+
+        <div class="counter">
+            {{ counter_m }}
+        </div>
+
+        <div class="botones-count">
+            <button (click)="addCount()">+</button>
+        </div>
+    </div>
+</div>
